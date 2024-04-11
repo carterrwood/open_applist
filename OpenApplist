@@ -1,0 +1,57 @@
+#!/usr/bin/osascript
+
+try
+
+	-- Get the path to the current users home directory
+	set homePath to path to home folder as text
+
+	-- Construct the path to the applist.txt file
+	set theFile to homePath & "Library:Application Support:OpenApplist:app_list.txt"
+
+	-- Open the file for reading
+	set fileRef to open for access theFile
+
+	-- Read the file contents into a list, splitting by newline
+	set appList to read fileRef using delimiters {linefeed}
+
+	-- Close the file
+	close access fileRef
+
+	-- Adjust to longer if you notice the applications are not opening quick enough
+	set openDelayTime to 3
+
+	-- Adjust to longer if need be
+	set fullscreenDelayTime to 1
+
+	repeat with theApp in appList
+
+		tell application theApp
+			activate
+			delay openDelayTime
+		end tell
+
+		-- set processName to theApp
+		set processName to theApp
+
+		-- Check if the application is Visual Studio Code and adjust the process name
+		if theApp contains "Visual Studio Code" then set processName to "Code"
+
+		set isFullscreen to false
+		
+		tell application "System Events" to tell process processName
+			if position of window 1 is {0, 0} then set isFullscreen to true
+			if isFullscreen is false then
+				keystroke "f" using {command down, control down}
+				delay fullscreenDelayTime
+			end if
+		end tell
+	end repeat
+
+on error errMsg number errNum
+
+    -- Log the error message to a file
+	set logFile to homePath & "Library:Application Support:OpenApplist:error.log"
+    set currentDate to do shell script "date +'%Y-%m-%d %H:%M:%S'"
+    do shell script "echo " & quoted form of currentDate & " " & quoted form of errMsg & " >> " & quoted form of POSIX path of logFile
+
+end try
