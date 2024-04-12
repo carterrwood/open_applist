@@ -2,10 +2,9 @@
 
 Open Applist is a tool designed for macOS users who prefer to work with their apps in full-screen mode and want a way to automatically launch their most-used apps in full-screen each time they login/power on their Mac.
 
-Before:![Screenshot 2024-04-12 at 2 34 23 PM](https://github.com/code-name-carter/open_applist/assets/48076414/43dbfff1-f030-498d-b162-a204a66a6c45)
+Before:![Screenshot 2024-04-12 at 2 34 23 PM](https://github.com/code-name-carter/open_applist/assets/48076414/c375ac41-8500-49ee-b52b-803cf5b06ebe)
 
-After:
-
+After:![Screenshot 2024-04-12 at 2 33 41 PM](https://github.com/code-name-carter/open_applist/assets/48076414/01232abf-0644-4c7d-9f5e-943a0ca09362)
 
 ## How to
 
