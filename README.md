@@ -24,27 +24,29 @@ After:![Screenshot 2024-04-12 at 2 33 41 PM](https://github.com/code-name-cart
 ## Logging
 
 - By default errors are logged to `~/Library/Application\ Support/OpenApplist/error.log`
-    - To view the error log:
-    ```
+  - To view the error log:
+
+    ```bash
     cat ~/Library/Application\ Support/OpenApplist/error.log
     ```
 
 ## Troubleshooting
 
 - System Events got an error: Can’t get process "<Process Name>".
-    - **Application Process Name Mismatch:**
+  - **Application Process Name Mismatch:**
         - Most app's application name is the same as their processes name, but not all of them. For example, the process for the app "Visual Studio Code" is called "code". Apps like this need special attention in the `OpenApplist` file.
         - If you encounter this, just add another line similar the following code in `OpenApplist` with the correct process name (you can find this by watching the Activity Monitor)
             ```
             -- Check if the application is Visual Studio Code and adjust the process name
-		    if   theApp contains "Visual Studio Code" then set processName to "Code"
+            if   theApp contains "Visual Studio Code" then set processName to "Code"
             ```
     - **Application Launch Delay:**
-        - The default delay time between opening and app and trying to fullscreen it is 3 seconds. Sometimes that's too short for an application's process to actually begin. Find `set openDelayTime to 3` in the `OpenApplist` file and extend it, then re-run `./deploy.sh`
+      - The default delay time between opening and app and trying to fullscreen it is 3 seconds. Sometimes that's too short for an application's process to actually begin. Find `set openDelayTime to 3` in the `OpenApplist` file and extend it, then re-run `./deploy.sh`
 
 ## Compatibility
 
-- Developed and tested on macOS Sonoma 14.2.1.
+- Developed and tested on macOS Sonoma 14.2.1
+- Tested on macOS Ventura 13.4
 
 ## Contributing
 
